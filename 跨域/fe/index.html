@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- script 天然支持跨域请求 -->
+  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/vue/0.10.0/vue.js"></script> -->
+  <!-- script是用来引入js的
+  http://127.0.0.1:8088/api返回的是js吗？ 
+  -->
+  <!-- <script>
+    function foo(data) {
+      console.log('接受到后端返回的数据了', data);
+    }
+  </script> -->
+  <!-- 
+    script 得到的后端返回的内容 就是一段字符串(xxx.js xxx.txt都是字符串)
+    这段到了浏览器里面被解析执行
+    foo({code: 0})
+  -->
+  <!-- <script src="http://127.0.0.1:8088/api"></script> -->
+
+  <script>
+    function jsonp({url}) {
+      return new Promise((resolve, reject) => {
+        // 为了保证每个请求方法的方法名唯一
+        let methodName = `jsonCallback${Date.now()}`
+        window[methodName] = function(data) {
+          resolve(data)
+        }
+        const scriptNode = document.createElement('script')
+        scriptNode.src = url + '?callback=' + methodName
+        document.body.appendChild(scriptNode)
+        // function clear() {
+        //   delete window[methodName]
+        //   document.body.removeChild(scriptNode)
+        // }
+        setTimeout(() => {
+          reject()
+        }, 5000);
+      })
+    }
+    jsonp({url: 'http://127.0.0.1:8088/api'})
+    .then(res => {
+      console.log('结果', res);
+    })
+  </script>
+</body>
+</html>
