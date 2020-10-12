@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // let obj = {
+    //   a: 1
+    // }
+    // // delete get set hasOwnProperty(当前这个对象)
+    // Object.getPrototypeOf(obj)
+    // // obj.__proto__
+    // Object.setPrototypeOf(obj, {b: 2})
+    // // 'a' in obj (查找原型链)
+    // console.log(obj);
+    // for(let k in obj) {
+    //   console.log(k);
+    // }
+    // let newObj = new Proxy(obj, {
+    //   get() {
+
+    //   },
+    //   set() {},
+    //   deleteProperty() {},
+    //   defineProperty() {},
+    //   has(){}
+    //   // apply() { // 函数调用的监测
+    //   //   console.log('函数被调用了');
+    //   // } 
+    // })
+    let f = () => {}
+    let newf = new Proxy(f, {
+      apply(...rest) {
+        console.log('函数被调用了');
+        return Reflect.apply(...rest)
+      }
+    })
+    newf()
+  </script>
+</body>
+</html>
