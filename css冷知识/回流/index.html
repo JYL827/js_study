@@ -33,9 +33,9 @@
 
     /* 
       发生几次回流 3次
-      第一次offsetwidth获取DOMA的宽度强制回流一次，
-      第二次offsetwidth获取新的DOMA的宽度强制回流一次，
-      回流队列完成全部回流一次
+      第一次offsetwidth获取DomA的宽度强制清空渲染队列回流一次，
+      第二次offsetwidth获取新的DomA的宽度强制清空渲染队列回流一次，
+      渲染队列完成后没有其他操作全部回流一次
     */
     const DomA = document.getElementById('DomA')
     const DomB = document.getElementById('DomB')
