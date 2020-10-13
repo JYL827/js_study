@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    .float {
+      float: left;
+    }
+    .box {
+      width: 100px;
+    }
+    .box p {
+      clear: both;
+    }
+  </style>
+  <div class="box">
+    <div class="float">float</div>
+    <p>大家都不把大家都静安寺课代表不点击开始吧卡上吧</p>
+  </div>
+  <div id="DomA"></div>
+  <div id="DomB"></div>
+  <div id="DomC"></div>
+  <script>
+    // float
+    // 清除浮动: over-flow: hidden
+    // clear: both； + div
+    const DomA = document.getElementById('DomA')
+    const DomB = document.getElementById('DomB')
+    const DomC = document.getElementById('DomC')
+    function timer() {
+      DomA.style.width = DomA.offsetWidth + 1 + 'px'
+      DomB.style.width = DomA.offsetWidth + 1 + 'px'
+      DomC.style.width = DomA.offsetWidth + 1 + 'px'
+    }
+    setTimeout(() => {
+      timer()
+    }, 1000);
+  </script>
+</body>
+</html>
