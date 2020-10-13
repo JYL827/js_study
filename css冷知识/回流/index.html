@@ -6,6 +6,11 @@
   <title>Document</title>
 </head>
 <body>
+  <!-- 
+    float
+    清除浮动: over-flow: hidden
+    clear: both； + div
+   -->
   <style>
     .float {
       float: left;
@@ -25,9 +30,13 @@
   <div id="DomB"></div>
   <div id="DomC"></div>
   <script>
-    // float
-    // 清除浮动: over-flow: hidden
-    // clear: both； + div
+
+    /* 
+      发生几次回流 3次
+      第一次offsetwidth获取DOMA的宽度强制回流一次，
+      第二次offsetwidth获取新的DOMA的宽度强制回流一次，
+      回流队列完成全部回流一次
+    */
     const DomA = document.getElementById('DomA')
     const DomB = document.getElementById('DomB')
     const DomC = document.getElementById('DomC')
