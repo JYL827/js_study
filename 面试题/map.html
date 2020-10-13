@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 实现数组的map方法
+    Array.prototype.map = function(func) {
+      let arr = this
+      let newArr = []
+      for(let i = 0; i < arr.length; i++) {
+        let num = arr[i]
+        newArr.push(func(num, i, arr))
+      }
+      return newArr
+    }
+
+    function readFile(func) {
+      setTimeout(() => {
+        func('ok')
+      }, 3000);
+    }
+    readFile((c) => {
+      console.log(c); // 3s输出一个'ok'
+    })
+    function f() {}
+  </script>
+</body>
+</html>
