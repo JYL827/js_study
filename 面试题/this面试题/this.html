@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var a = function () {
+      this.b = 3;
+    }
+    var c = new a();
+    a.prototype.b = 9;
+    var b = 7;
+    a();
+
+    console.log(b); // 3
+    console.log(c.b); // 3
+
+
+    function B() {
+      console.log(this.c);
+      this.c = 1
+    }
+    B.prototype.c = 2
+    let bbb = new B()
+
+    /*this
+        1.默认指向 window
+        2.对象.xxx()
+        3.call/apply/bind
+        4.new
+    */
+    function sum(a, b) { return a + b }
+    sum.apply({}, [1, 2])
+
+    let sum10 = sum.bind({}, 10) // 1. 绑定 this 2. 预先传递参数
+    sum10(20) // a + b
+
+
+    window.data = 5;
+    var foo = {
+      data: 6,
+      click: () => {
+        console.log(this.data);
+      }
+    };
+
+    div.addEventListener('click', foo.click); // this 指向 div
+
+    var bar = foo.click;
+    bar();   // this 指向 window
+
+  </script>
+</body>
+
+</html>

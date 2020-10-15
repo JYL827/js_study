@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var regex = /a/g;
+    // lastIndex: 上一次匹配的位置
+    // 全局匹配时会记住上一次匹配的位置，下一次查找时就会从上一次匹配的位置开始查找，导致找不到
+    console.log(regex.lastIndex, regex.test('abcabc'));
+    console.log(regex.lastIndex, regex.test('abcabc'));
+    console.log(regex.lastIndex, regex.test('abcabc'));
+    console.log(regex.lastIndex, regex.test('abcabc'));
+  </script>
+</body>
+
+</html>
