@@ -1,0 +1,31 @@
+<script>
+  // 实现对a这个实例对象用for of 遍历
+  class A {
+    items = ['1', '2', '3'];
+    [Symbol.iterator] = function() {
+      let that = this
+      let i = 0
+      return {
+        next() {
+          if(i === 3) {
+            return {
+              done: true,
+              value: undefined
+            }
+          }
+          let res = {
+            done: false,
+            value: that.items[i]
+          }
+          i++
+          return res
+        }
+      }
+    }
+  }
+  const a = new A()
+
+  for (const i of a) {
+    console.log(i);
+  }
+</script>

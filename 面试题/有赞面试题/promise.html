@@ -1,0 +1,30 @@
+<script>
+  let p = (t) => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(t)
+      }, t);
+    })
+  }
+  // let p4 = Promise.resolve()
+  let p3 = Promise.reject('Error') // 立即执行失败，走reject的输出结果
+  let arr = [p(1000), p(2000), p3]
+  console.time('a');
+  // all() 和 race() allSettled 都接收一个数组
+  // all() 等所有的Promise都成功后把所有的promise.then()的结果都输出出来，有一个不成功都不会输出
+  // race() 把执行最快的结果输出出来
+  Promise.all(arr).then(r => {
+    console.timeEnd('a')
+    console.log(r);
+  })
+
+  // allSettled()输出所有状态发生变化的结果
+  Promise.allSettled(arr).then(r => {
+    console.log('-----', r);
+  })
+  console.time('a1')
+  Promise.race(arr).then(r => {
+    console.timeEnd('a1')
+    console.log(r);
+  })
+</script>
