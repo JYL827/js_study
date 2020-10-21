@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #el {
+      transform: all .5s ease-in;
+    }
+  </style>
+</head>
+<body>
+  <div id="el">123</div>
+  <script>
+    const el = document.querySelector('#el')
+    const divNode = document.createElement('div')
+    divNode.style.width = '20px';divNode.style.height = '20px'
+    divNode.style.backgroundColor = 'red';
+    let img = new Image()
+    img.src = 'https://yanxuan.nosdn.127.net/94408b4d014ce6774e8f768bdf9b6f60.jpg'
+    let prePosition = el.getBoundingClientRect()
+    setTimeout(() => {
+      document.body.insertBefore(img, el)
+      let currentPosition = el.getBoundingClientRect()
+      // FLIP 反转 first last invert play
+      // el.style.transform = 'translateY(-20px)'
+      // el.style.transform = 'translateY(0px)'
+      let keyFrame = [{
+        transform: `translate(${prePosition.top - currentPosition.top}px)`
+      }, {
+        transform: 'translateY(0px)'
+      }];
+      // play
+      el.animate(keyFrame, {
+        duration: 300,
+        easing: 'ease-in-out'
+      })
+    }, 3000);
+  </script>
+</body>
+</html>
