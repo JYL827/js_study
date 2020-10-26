@@ -1,6 +1,6 @@
 const http = require('http')
-const server = http.createServer()
 const fse = require('fs-extra')
+const path = require('path')
 const multiparty = require('multiparty')
 
 const server = http.createServer()
@@ -14,24 +14,26 @@ server.on('request', async(req, res) => {
     res.end()
     return
   }
+  const multipart = new multiparty.Form()
+  multipart.parse(req, async(err, fields, files) => {
+    // console.log(fields, files);
+    if(err) return
+    const [chunk] = files.chunk
+    const [hash] = fields.hash
+    const [filename] = fields.filename
+    const chunkDir = path.resolve(UPLOAD_DIR, filename)
+
+    // 如果切片目录不存在
+    if(!fse.existsSync(chunkDir)) {
+      await fse.mkdirs(chunkDir)
+    }
+
+    await fse.move(chunk.path, `${chunkDir}/${hash}`)
+    res.end('ok')
+  })  
 })
 
-const multipart = new multiparty.Form()
-multipart.parse(req, async(err, fields, files) => {
-  if(err) return
-  const [chunk] = files.chunk
-  const [hash] = fields.hash
-  const [filename] = fields.filename
-  const chunkDir = path.resolve(UPLOAD_DIR, filename)
 
-  // 如果切片目录不存在
-  if(!fse.existsSync(chunkDir)) {
-    await fse.mkdirs(chunkDir)
-  }
-
-  await fse.move(chunk.path, `${chunkDir}/${hash}`)
-  res.end('ok')
-})
 server.listen(3000, () => {
   console.log('正在监听3000端口');
 })
