@@ -9,6 +9,10 @@
 - 执行栈是一个存储函数调用的栈结构
 
 # Event-Loop
+分类：
+1. window-event-loop 最常遇到
+2. worker-event-loop 前端里面，有web-worker(另外一个线程)
+3. workerlet-event-loop 代码跑在worklet里面
 
 - 同步代码
 - 异步代码 - 微任务(microtask) - 宏任务(macrotask)
