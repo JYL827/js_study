@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function quickSort(arr) {
+      let arr1 = [], arr2 = []
+      let p = arr[0]
+      if (arr.length <= 1) return arr
+      for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < p) {
+          arr1.push(arr[i])
+        } else {
+          arr2.push(arr[i])
+        }
+      }
+      let res = [...quickSort(arr1), p, ...quickSort(arr2)]
+      return res
+    }
+    console.log(quickSort([1, -6, -1, 4, 7, 10, 2, 1]));
+  </script>
+</body>
+
+</html>
