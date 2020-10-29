@@ -1,0 +1,9 @@
+<script>
+  // reduce实现map()
+Array.prototype.map = function(func) {
+  return this.reduce((pre, next) => {
+    pre.push(fn(next))
+    return pre
+  }, [])
+}
+</script>
