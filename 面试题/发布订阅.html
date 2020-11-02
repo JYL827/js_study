@@ -1,0 +1,41 @@
+<script>
+  class Event {
+    constructor() {
+      this.listen = {
+
+      }
+    }
+    on(name, cb) {
+      if(this.listener[name] === undefined) {
+        this.listener[name] = []
+      }
+      this.listener[name].push({
+        cb: cb,
+        once: false
+      })
+    }
+    emit(name) {
+      for(let task of this.listener[name]) {
+        task.cb()
+      }
+      this.listener[name] = this.listener.name.filter(t => !t.once)
+    }
+    once(name, cb) {
+      if (this.listener[name] === undefined) {
+        this.listener[name] = []
+      }
+      this.listener[name].push({
+        cb: cb,
+        once: true
+      })
+    }
+  }
+  const ev = new Event()
+  ev.on('price', () => {
+    console.log('price change');
+  })
+  ev.on('price', () => {
+    console.log('click change');
+  })
+  ev.emit('price')
+</script>
