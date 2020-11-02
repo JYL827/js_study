@@ -1,0 +1,12 @@
+<script>
+  var pathSum = function(root) {
+    function preOrder(node, path) {
+      if(node.left === null && node.right === null)
+      return
+      path.push(node.val)
+      preOrder(node.left, path.slice(0))
+      preOrder(node.right, path.slice(0))
+    }
+    preOrder(root, [])
+  }
+</script>
