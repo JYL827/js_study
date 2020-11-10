@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 
+    各边框在视窗中显示为边框加容器的总外边线对角与容器对角连线
+    即正常认知中边框四个角重叠部分各占一半，两个同时存在时才显示  
+     */
+    .test {
+      width: 0;
+      height: 0;
+      /* border-top: 50px solid #000; */
+      border-left: 300px solid transparent;
+      border-right: 100px solid transparent;
+      border-bottom: 173px solid red;
+    }
+  </style>
+</head>
+<body>
+  <div class="test"></div>
+</body>
+</html>

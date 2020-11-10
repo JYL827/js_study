@@ -1,0 +1,16 @@
+<script>
+  var a = 123
+  var b = function () {
+    var a = 456
+    console.log(a);
+    bar() // 123 
+  }
+
+  function foo() { // 函数声明会将整个函数提升到全局顶部,并且后面同名的变量不再提升
+    // var a = 6
+    console.log(a);
+    console.log(this); // window
+  }
+  b()
+
+</script>
