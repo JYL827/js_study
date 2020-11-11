@@ -1,0 +1,22 @@
+<script>
+  // 栈
+  function flat(arr) {
+    let stack = [...arr]
+    let res = []
+    while(stack.length) {
+      let item = stack.pop()
+      if(Array.isArray(item)) {
+        stack.push(...item)
+      }else {
+        res.unshift(item)
+      }
+    }
+  }
+
+  // reduce
+  function flatten(arr) {
+    return arr.reduce((acc, cur) => {
+      return acc.concat(Array.isArray(cur) ? flatten(cur) : cur)
+    }, [])
+  }
+</script>
