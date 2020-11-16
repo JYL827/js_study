@@ -13,3 +13,12 @@
       sameSite： strict (只有在baidu.com请求api.baidu.com 才会传输到baidu.com，解决跨站请求伪造的问题)
                  none 
                  lax (有时行，有的时候不行)
+
+# css 布局方案
+float
+position
+normal flow
+  - inline-level-box ifc
+  - block-level-box  bfc
+flex
+grid

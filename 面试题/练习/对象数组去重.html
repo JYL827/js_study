@@ -1,0 +1,7 @@
+<script>
+  const result = arr.reduce((acc, cur) =>{
+    let ids = acc.map(item => item.id)
+    return ids.include(cur.id) ? acc : [...acc, cur]
+  }, [])
+  console.log(result); 
+</script>
