@@ -1,0 +1,27 @@
+<script>
+  // 1.使用定时器实现
+  function throttle(fn) {
+    let timeout
+    return function() {
+      if(!timeout) {
+        timeout = setTimeout(() => {
+          fn()
+          timeout = null
+        }, 2000);
+      }
+    }
+  }
+
+
+  // 2.使用date.now实现
+  function throttle(fn) {
+    let pre = 0
+    return function() {
+      let now = Date.now()
+      if(now - pre >= 2000) {
+        fn()
+        pre = now
+      }
+    }
+  }
+</script>
