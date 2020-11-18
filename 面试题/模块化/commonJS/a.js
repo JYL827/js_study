@@ -4,7 +4,7 @@ function inc() {
   c++,
   obj.v = false
 }
-module.export = {
+module.exports = {
   c,
   inc,
   obj

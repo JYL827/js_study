@@ -1,6 +1,6 @@
 # import和require的区别
   import export/export default 是属于es官方的引入方式
-  require export === module export 属于民间的，可以手写
+  require export === module.exports 属于民间的，可以手写
 # cookie存什么东西，怎么存，哪些属性
   1. cookie(很小，只有4kb) 和localstore(5mb) sessionStorage(5mb)都属于前端存储，
       如果cookie里面有内容，会自动把cookie当做请求头传输给后端
@@ -22,3 +22,10 @@ normal flow
   - block-level-box  bfc
 flex
 grid
+
+# 怎么写cookie
+1. js
+  document.cookie = `name=value;expire=20201117`
+  console.log(document.cookie)能读取 httponly 为 false 的cookie
+2. 后端
+  ctx.set('set-cookie')
