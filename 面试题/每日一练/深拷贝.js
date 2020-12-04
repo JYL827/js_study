@@ -1,5 +1,5 @@
 function deepCopy(obj1) {
-  let obj2 = Array.isArray ? [] : {}
+  let obj2 = Array.isArray(obj1) ? [] : {}
   if(obj1 && typeof obj1 === 'object') {
     for(let i in obj1) {
       if(obj1.hasOwnproperty(i)) {

@@ -30,16 +30,19 @@
         let methodName = `jsonCallback${Date.now()}`
         window[methodName] = function(data) {
           resolve(data)
+          clear()
         }
         const scriptNode = document.createElement('script')
         scriptNode.src = url + '?callback=' + methodName
         document.body.appendChild(scriptNode)
-        // function clear() {
-        //   delete window[methodName]
-        //   document.body.removeChild(scriptNode)
-        // }
+        // 状态改变时，成功或者失败都执行clear()删除函数和script节点
+        function clear() {
+          delete window[methodName]
+          document.body.removeChild(scriptNode)
+        }
         setTimeout(() => {
           reject()
+          clear()
         }, 5000);
       })
     }

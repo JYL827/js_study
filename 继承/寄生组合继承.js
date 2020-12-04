@@ -13,7 +13,7 @@ function SubType(name, age) {
 // SubType.prototype = new SuperType()
 SubType.prototype = Object.create(SuperType.prototype)
 
-SubType.prototype.constructor = SubType
+// SubType.prototype.constructor = SubType
 SubType.prototype.sayAge = function() {
   console.log(this.age);
 }
